@@ -16,7 +16,7 @@
 <script>
 import { createClient } from '@supabase/supabase-js
 const SUPABASE_URL = "https://ntcyzfcobicdgmzjdfcl.supabase.co";
-const SUPABASE_KEY = process.env.SUPABASE_KEY;
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im50Y3l6ZmNvYmljZGdtempkZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyNzczNjYsImV4cCI6MjA3MDg1MzM2Nn0._xkH6LmDKAmRegVxoN4UGXgK-41B48mcQ6pXndYTFmoeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im50Y3l6ZmNvYmljZGdtempkZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyNzczNjYsImV4cCI6MjA3MDg1MzM2Nn0._xkH6LmDKAmRegVxoN4UGXgK-41B48mcQ6pXndYTFmo";
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const map = L.map('map').fitWorld();
@@ -54,6 +54,7 @@ loadNotes();
 </script>
 </body>
 </html>
+
 
 
 
