@@ -16,13 +16,13 @@
 <script>
 const SUPABASE_URL = "https://ntcyzfcobicdgmzjdfcl.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im50Y3l6ZmNvYmljZGdtempkZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyNzczNjYsImV4cCI6MjA3MDg1MzM2Nn0._xkH6LmDKAmRegVxoN4UGXgK-41B48mcQ6pXndYTFmoeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im50Y3l6ZmNvYmljZGdtempkZmNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUyNzczNjYsImV4cCI6MjA3MDg1MzM2Nn0._xkH6LmDKAmRegVxoN4UGXgK-41B48mcQ6pXndYTFmo";
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const map = L.map('map').fitWorld();
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19}).addTo(map);
 
 async function loadNotes() {
-    const { data, error } = await supabase.from('notes').select('*');
+    const { data, error } = await supabaseClient.from('notes').select('*');
     if(data) {
         data.forEach(note => {
             L.marker([note.lat, note.lon]).addTo(map)
@@ -41,7 +41,7 @@ map.on('locationfound', e => {
 map.on('click', async e => {
     const text = prompt("Enter note for this location:");
     if(!text) return;
-    const { data, error } = await supabase.from('notes').insert([
+    const { data, error } = await supabaseClient.from('notes').insert([
         { lat: e.latlng.lat, lon: e.latlng.lng, text: text }
     ]);
     if(data) {
@@ -53,4 +53,5 @@ loadNotes();
 </script>
 </body>
 </html>
+
 
